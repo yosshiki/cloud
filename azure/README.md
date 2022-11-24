@@ -1,4 +1,5 @@
 # azure
+- [references](https://github.com/yosshiki/cloud/blob/main/azure/README.md#references)
 - [exams](https://github.com/yosshiki/cloud/blob/main/azure/README.md#exams)
   - [AZ-900](https://github.com/yosshiki/cloud/blob/main/azure/README.md#az-900)  
   - [AZ-104](https://github.com/yosshiki/cloud/blob/main/azure/README.md#az-104)  
