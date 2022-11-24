@@ -1,4 +1,10 @@
 # azure
+[exams](https://github.com/yosshiki/cloud/blob/main/azure/README.md#exams)
+[AZ-900](https://github.com/yosshiki/cloud/edit/main/azure/README.md#az-900)
+[AZ-104](https://github.com/yosshiki/cloud/edit/main/azure/README.md#az-104)
+[AZ-305](https://github.com/yosshiki/cloud/edit/main/azure/README.md#az-305)
+[SC-200](https://github.com/yosshiki/cloud/edit/main/azure/README.md#SC-200)
+
 
 ## references
 |item|URL|
