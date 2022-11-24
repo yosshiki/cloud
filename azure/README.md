@@ -13,6 +13,8 @@
 |Azure Resource Manager テンプレートにパラメーターと出力を追加する|https://learn.microsoft.com/ja-jp/training/modules/create-azure-resource-manager-template-vs-code/5-exercise-parameters-output?pivots=powershell|
 |演習 - Azure Resource Manager テンプレートを作成してデプロイする|https://learn.microsoft.com/ja-jp/training/modules/create-azure-resource-manager-template-vs-code/3-exercise-create-and-deploy-template?pivots=powershell|
 |Azure リソースへのアクセスをセキュリティで保護する|https://learn.microsoft.com/ja-jp/training/modules/secure-and-isolate-with-nsg-and-service-endpoints/?WT.mc_id=learnlive-20221012L-JP%3FWT.mc_id%3Dlearnlive-20221012L-JP|
+|service endpoint vs private endpoint1|https://qiita.com/taka_s/items/340c9c52f1e948f0f753|
+|service endpoint vs private endpoint2|https://zenn.dev/tomot/articles/89d561c36bc52c|
 
 
 ## exams
