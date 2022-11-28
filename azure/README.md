@@ -20,9 +20,17 @@
 |Azure Resource Manager テンプレートにパラメーターと出力を追加する|https://learn.microsoft.com/ja-jp/training/modules/create-azure-resource-manager-template-vs-code/5-exercise-parameters-output?pivots=powershell|
 |演習 - Azure Resource Manager テンプレートを作成してデプロイする|https://learn.microsoft.com/ja-jp/training/modules/create-azure-resource-manager-template-vs-code/3-exercise-create-and-deploy-template?pivots=powershell|
 |Azure リソースへのアクセスをセキュリティで保護する|https://learn.microsoft.com/ja-jp/training/modules/secure-and-isolate-with-nsg-and-service-endpoints/?WT.mc_id=learnlive-20221012L-JP%3FWT.mc_id%3Dlearnlive-20221012L-JP|
+
+## private endpoint
+|item|URL|
+|---|---|
+|private endpoint|https://learn.microsoft.com/ja-jp/azure/private-link/private-endpoint-overview|
 |service endpoint vs private endpoint1|https://qiita.com/taka_s/items/340c9c52f1e948f0f753|
 |service endpoint vs private endpoint2|https://zenn.dev/tomot/articles/89d561c36bc52c|
-
+|private endpoint dns|https://learn.microsoft.com/ja-jp/azure/private-link/private-endpoint-dns?source=recommendations#azure-private-endpoint-dns-configuration|
+|procedure|https://learn.microsoft.com/ja-jp/azure/private-link/create-private-endpoint-cli?tabs=dynamic-ip|
+|private link|https://learn.microsoft.com/ja-jp/azure/private-link/private-link-overview|
+|private link(mslearn)|https://learn.microsoft.com/ja-jp/training/modules/introduction-azure-private-link/|
 
 ## exams
 ### AZ-900
