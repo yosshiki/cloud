@@ -30,6 +30,7 @@
 |private endpoint dns|https://learn.microsoft.com/ja-jp/azure/private-link/private-endpoint-dns?source=recommendations#azure-private-endpoint-dns-configuration|
 |procedure|https://learn.microsoft.com/ja-jp/azure/private-link/create-private-endpoint-cli?tabs=dynamic-ip|
 |private link|https://learn.microsoft.com/ja-jp/azure/private-link/private-link-overview|
+|private link service|https://learn.microsoft.com/ja-jp/azure/private-link/private-link-service-overview|
 |private link(mslearn)|https://learn.microsoft.com/ja-jp/training/modules/introduction-azure-private-link/|
 
 ## exams
