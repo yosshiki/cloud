@@ -16,3 +16,7 @@ https://blog.macorin.net/powershell-credential-use-passwordfile/
 http://www.vwnet.jp/windows/WS08R2/PSPassword/SecurePassword.htm  
 
 https://tech.guitarrapc.com/entry/2014/01/14/101056  
+
+Teams Notification  
+https://qiita.com/miyamiya/items/ccae505b8e97b5b532a7  
+https://learn.microsoft.com/ja-jp/archive/blogs/privatecloud/post-notifications-to-microsoft-teams-using-powershell
