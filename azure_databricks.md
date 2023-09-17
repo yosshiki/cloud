@@ -6,6 +6,7 @@
 - deploy databricks workspace
 - deploy databricks workspace simplified atchitecture
 - workspace management
+  - secret acl
 
 
 ## 認証  
@@ -399,3 +400,29 @@ data "databricks_node_type" "smallest" {
 }
 ```
 
+## secret acl
+https://learn.microsoft.com/ja-jp/azure/databricks/security/auth-authz/access-control/secret-acl#terraform-integration  
+- prerequisite: premium plan or standard plan with MANAGE perssion granted user
+- managed by secret scope
+
+```
+resource "databricks_group" "ds" {
+  display_name = "data-scientists"
+}
+
+resource "databricks_secret_scope" "app" {
+  name = "app-secret-scope"
+}
+
+resource "databricks_secret_acl" "my_secret_acl" {
+  principal = databricks_group.ds.display_name
+  permission = "READ"
+  scope = databricks_secret_scope.app.name
+}
+
+resource "databricks_secret" "publishing_api" {
+  key = "publishing_api"
+  string_value = "SECRET_API_TOKEN_HERE"
+  scope = databricks_secret_scope.app.name
+}
+```
