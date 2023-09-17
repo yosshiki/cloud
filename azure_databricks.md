@@ -1,4 +1,12 @@
 # Azure Databricks IaC by Terraform 
+- 認証
+- IaC
+- Databricks Terraform provider
+- Sample Configuration
+- deploy databricks workspace
+- deploy databricks workspace simplified atchitecture
+- workspace management
+
 
 ## 認証  
   https://learn.microsoft.com/ja-jp/azure/databricks/dev-tools/service-prin-aad-token
@@ -229,3 +237,165 @@ https://learn.microsoft.com/ja-jp/azure/databricks/dev-tools/terraform/#sample-c
    ```
    job_name = "My Job"
    ```
+
+# deploy databricks workspace
+
+prerequisite: az login with Contributor role  
+`sample.tf`
+```
+terraform {
+  required_providers {
+    azurerm =  "~> 2.33"
+    random = "~> 2.2"
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+
+variable "region" {
+  type = string
+  default = "westeurope"
+}
+
+resource "random_string" "naming" {
+  special = false
+  upper   = false
+  length  = 6
+}
+
+data "azurerm_client_config" "current" {
+}
+
+data "external" "me" {
+  program = ["az", "account", "show", "--query", "user"]
+}
+
+locals {
+  prefix = "databricksdemo${random_string.naming.result}"
+  tags = {
+    Environment = "Demo"
+    Owner       = lookup(data.external.me.result, "name")
+  }
+}
+
+resource "azurerm_resource_group" "this" {
+  name     = "${local.prefix}-rg"
+  location = var.region
+  tags     = local.tags
+}
+
+resource "azurerm_databricks_workspace" "this" {
+  name                        = "${local.prefix}-workspace"
+  resource_group_name         = azurerm_resource_group.this.name
+  location                    = azurerm_resource_group.this.location
+  sku                         = "premium"
+  managed_resource_group_name = "${local.prefix}-workspace-rg"
+  tags                        = local.tags
+}
+
+output "databricks_host" {
+  value = "https://${azurerm_databricks_workspace.this.workspace_url}/"
+}
+```
+
+# deploy databricks workspace simplified atchitecture
+https://registry.terraform.io/providers/databricks/databricks/latest/docs/guides/azure-private-link-workspace-simplified
+`provider.tf`
+```
+terraform {
+  required_providers {
+    databricks = {
+      source = "databricks/databricks"
+    }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">=3.43.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+```
+Define the required variables
+```
+variable "cidr" {
+  type = string
+}
+
+variable "rg_name" {
+  type = string
+}
+
+variable "location" {
+  type = string
+}
+
+data "azurerm_client_config" "current" {
+}
+
+data "external" "me" {
+  program = ["az", "account", "show", "--query", "user"]
+}
+
+locals {
+  prefix = "abd-pl"
+  tags = {
+    Environment = "Demo"
+    Owner       = lookup(data.external.me.result, "name")
+  }
+}
+```
+
+```
+resource "azurerm_databricks_workspace" "this" {
+  name                                  = "${local.prefix}-workspace"
+  resource_group_name                   = var.rg_name
+  location                              = var.location
+  sku                                   = "premium"
+  tags                                  = local.tags
+  public_network_access_enabled         = false
+  network_security_group_rules_required = "NoAzureDatabricksRules"
+  customer_managed_key_enabled          = true
+  custom_parameters {
+    no_public_ip                                         = true
+    virtual_network_id                                   = azurerm_virtual_network.this.id
+    private_subnet_name                                  = azurerm_subnet.private.name
+    public_subnet_name                                   = azurerm_subnet.public.name
+    public_subnet_network_security_group_association_id  = azurerm_subnet_network_security_group_association.public.id
+    private_subnet_network_security_group_association_id = azurerm_subnet_network_security_group_association.private.id
+    storage_account_name                                 = "dbfs"
+  }
+
+  depends_on = [
+    azurerm_subnet_network_security_group_association.public,
+    azurerm_subnet_network_security_group_association.private
+  ]
+}
+```
+
+# workspace management  
+Terraform を使用して Databricks ワークスペースを管理する  
+https://learn.microsoft.com/ja-jp/azure/databricks/dev-tools/terraform/workspace-management  
+`provider.tf`
+```
+terraform {
+  required_providers {
+    databricks = {
+      source  = "databricks/databricks"
+    }
+  }
+}
+
+provider "databricks" {}
+
+data "databricks_current_user" "me" {}
+data "databricks_spark_version" "latest" {}
+data "databricks_node_type" "smallest" {
+  local_disk = true
+}
+```
+
