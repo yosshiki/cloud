@@ -206,6 +206,7 @@ resource "azurerm_databricks_workspace" "dp" {
   resource_group_name                   = var.rg
   location                              = var.location
   sku                                   = "premium"
+  managed_resource_group_name           = "${local.prefix}-workspace-dp-rg"
   tags                                  = local.tags
   public_network_access_enabled         = false
   network_security_group_rules_required = "NoAzureDatabricksRules"
@@ -231,6 +232,7 @@ resource "azurerm_databricks_workspace" "auth" {
   resource_group_name                   = var.rg
   location                              = var.location
   sku                                   = "premium"
+  managed_resource_group_name           = "${local.prefix}-workspace-auth-rg"
   tags                                  = local.tags
   public_network_access_enabled         = false
   network_security_group_rules_required = "NoAzureDatabricksRules"
