@@ -12,7 +12,15 @@ https://www.terraform.io/
 - state management
   - create \<env>.tfbackend
 
-# azurerm
+## providers
+|provider|URL|
+| ---- | ---- |
+|azurerm|[URL](https://github.com/yosshiki/cloud/tree/main/terraform#provider_azurerm)|
+|azuread|[URL](https://github.com/yosshiki/cloud/tree/main/terraform#provider_azuread)|
+|random|[URL](https://github.com/yosshiki/cloud/tree/main/terraform#provider_random)|
+
+
+# provider_azurerm
 https://github.com/hashicorp/terraform-provider-azurerm  
 - latest: https://registry.terraform.io/providers/hashicorp/azurerm/latest  
 - 3.72
@@ -84,7 +92,7 @@ https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 |-- budget --| ---- |
 |azurerm_consumption_budget_subscription||
 
-# azuread
+# provider_azuread
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs  
 - 2.4.3
 - 2.4.1  
@@ -95,7 +103,7 @@ https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 |azuread_service_principal||
 |azuread_service_principal_password||
 
-# random
+# provider_random
 |module|URL|
 | ---- | ---- |
 | random_password | [URL](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) |
