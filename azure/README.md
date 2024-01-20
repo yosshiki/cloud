@@ -1,4 +1,5 @@
 # azure
+- [Architecture](https://github.com/yosshiki/cloud/blob/main/azure/README.md#Architecture)
 - [references](https://github.com/yosshiki/cloud/blob/main/azure/README.md#references)
 - [exams](https://github.com/yosshiki/cloud/blob/main/azure/README.md#exams)
   - [AZ-900](https://github.com/yosshiki/cloud/blob/main/azure/README.md#az-900)  
@@ -12,6 +13,11 @@ alias azlist='az account list --query [*].[name,id] -o tsv'
 alias azset='az account set -s'
 alias azwho='az account show --query [name,id] -o tsv'
 ```
+
+## Architecture
+|item|URL|
+|---|---|
+|Blue-Green-Deployment_for_AKS|https://learn.microsoft.com/ja-jp/azure/architecture/guide/aks/blue-green-deployment-for-aks|
 
 ## references
 |item|URL|
