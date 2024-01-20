@@ -19,6 +19,7 @@ alias azwho='az account show --query [name,id] -o tsv'
 |---|---|
 |Blue-Green-Deployment_for_AKS|https://learn.microsoft.com/ja-jp/azure/architecture/guide/aks/blue-green-deployment-for-aks|
 |Networking and connectivity for mission-critical workloads on Azure|https://learn.microsoft.com/ja-jp/azure/well-architected/mission-critical/mission-critical-networking-connectivity|
+|hostname-preservation|https://learn.microsoft.com/ja-jp/azure/architecture/best-practices/host-name-preservation|
 
 ## references
 |item|URL|
