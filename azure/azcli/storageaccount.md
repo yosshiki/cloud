@@ -2,20 +2,25 @@ https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?ta
 
 ```
 NAME=
-RESOURCEGROUP=
+RG=
 LOCATION=japaneast
 SKU=Standard_GRS
 KIND=StorageV2
 
+
 az storage account create \
   --name ${NAME} \
-  --resource-group ${RESOURCEGROUP} \
+  -g ${RG} \
   --location ${LOCATION} \
   --sku ${SKU} \
-  --kind ${KIND}
-  
+  --kind ${KIND} 
+
+az storage account network-rule add \
+  -g ${RG} \
+  --account-name ${NAME} \
+  --ip-address 23.45.1.0/24 67.89.100.0/24
+
 az storage account show \
-    --resource-group ${RESOURCEGROUP} \
+    -g ${RG} \
     --name ${NAME}
-    
 ```
